@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+   <title>List of Villages</title>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+   <div layout:fragment="content">
+
+      <ul th:each="village: ${villageList}">
+         <li th:text="${village.type=='D'?'Desa':'Kelurahan'} + ' ' +${village.name} "></li>
+      </ul>
+
+   </div>
+</body>
+
+</html>

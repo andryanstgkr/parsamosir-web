@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+   <title>List of Villages</title>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+   <div layout:fragment="content">
+      <div class="clearfix">
+         <form method="POST" th:action="@{/village/confirm}">
+            <div class="mb-3">
+               <label for="village-name" class="form-label">Nama Desa:</label>
+               <span th:text=${name}></span>
+            </div>
+            <div class="mb-3">
+               <label for="disabledSelect" class="form-label">Kecamatan: </label>
+               <span th:text=${district.name}></span>
+            </div>
+            <div class="row float-end">
+               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group" role="group" aria-label="Second group">
+                     <button type="button" class="btn btn-secondary">Back</button>
+                     <button type="submit" class="btn btn-primary ms-2">Submit</button>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</body>
+
+</html>

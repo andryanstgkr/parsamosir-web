@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+   <title>List of Villages</title>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+   <div layout:fragment="content">
+      <div class="clearfix">
+         <form method="POST" th:action="@{/village/confirm}">
+            <div class="mb-3">
+               <label for="village-name" class="form-label">Nama Desa</label>
+               <input type="text" class="form-control" id="village-name" name="name" autocomplete="off"
+                  placeholder="Nama desa" th:value=${name}>
+            </div>
+            <div class="mb-3">
+               <label for="village-name" class="form-label">Jenis Desa</label>
+               <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="option1" name="villageType" class="custom-control-input mb-3" value="D">
+                  <label class="custom-control-label" for="villageType">Desa</label>
+                  <input type="radio" id="option2" name="villageType" class="custom-control-input mb-3" value="K">
+                  <label class="custom-control-label" for="villageType">Kelurahan</label>
+               </div>
+            </div>
+            <div class="mb-3">
+               <label for="disabledSelect" class="form-label">Kecamatan</label>
+               <select id="districtList" class="form-select" name="district">
+                  <option th:each="district : ${districtList}" th:value="${district.id}" th:text="${district.name}"
+                     th:checked="${district.id} == ${attrDistrict.id}?'checked':''">
+                  </option>
+               </select>
+            </div>
+            <div class="row float-end">
+               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group" role="group" aria-label="Second group">
+                     <button type="button" class="btn btn-secondary">Clear</button>
+                     <button type="submit" class="btn btn-primary ms-2">Confirm</button>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</body>
+
+</html>

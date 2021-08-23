@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+   <title>List of Villages</title>
+   <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+   <div layout:fragment="content">
+      <table class="table table-stripped table-responsive card-1 p-4">
+         <tr>
+             <th class="py-3">Nama</th>
+             <th class="py-3">Pemilik</th>
+             <th class="py-3">Desa</th>
+         </tr>
+         <tr th:if="${placeList.size>0}" th:each="place: ${placeList}">
+             <td class="text-left" >
+                 <a th:href="@{/}" th:text="${place.name}"></a>
+             </td>
+             <td class="text-left" th:text="${place.owner}"></td>
+             <td class="text-left" th:text="${place.villageName}"></td>
+         </tr>
+         <tr th:if="${placeList.size==0}" th:each="place: ${placeList}">
+            <td class="text-center" th:text="Tidak ada data" colspan="3"></td>
+        </tr>
+     </table>
+   </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>List of Villages</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <table>
+            <tr>
+                <th class="py-3">Nama</th>
+                <th class="py-3">Kecamatan</th>
+                <th class="py-3">Kabupaten</th>
+            </tr>
+            <tr th:each="instance : ${villageList}">
+                <td th:text="${instance.key.name}" valign="top">num</td>
+                <td>
+                    <ul th:each="village: ${instance.value}">
+                        <li th:text="${village.type=='D'?'Desa':'Kelurahan'} + ' ' +${village.name} "></li>
+                    </ul>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
